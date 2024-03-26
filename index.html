@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        #calculator {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        .input-label {
+            font-size: 28px;
+        }
+        
+        .input-field {
+            font-size: 28px;
+        }
+        
+        .result-container {
+            background-color: lightblue;
+            padding: 10px;
+            margin-top: 28px;
+        }
+        
+        .result {
+            font-size: 28px;
+            color: black;
+            font-weight: bold;
+        }
+        
+        .calculate-button {
+            font-size: 28px;
+            margin-top: 28px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h2>Stock Solution Preparation Calculator</h2>
+        <h3>(10 mM Stock Solution)</h3>
+        <label for="powderWeight" class="input-label">Powder Weight (mg):</label>
+        <input type="number" id="powderWeight" class="input-field">
+        <br><br>
+        <label for="molecularWeight" class="input-label">Molecular Weight:</label>
+        <input type="number" id="molecularWeight" class="input-field">
+        <br><br>
+        <button onclick="calculate()" class="calculate-button">Calculate</button>
+        
+        <div class="result-container">
+            <p class="result" id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            var powderWeight = document.getElementById("powderWeight").value;
+            var molecularWeight = document.getElementById("molecularWeight").value;
+            var volumeDMSO = (powderWeight / molecularWeight) * 100000;
+            var resultElement = document.getElementById("result");
+            resultElement.innerHTML = "<strong>Volume of DMSO needed to prepare 10 mM stock solution:</strong> " + volumeDMSO.toFixed(2) + " uL";
+        }
+    </script>
+</body>
+</html>
